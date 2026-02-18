@@ -72,8 +72,8 @@ export const Header: React.FC<HeaderProps> = ({ onContactClick }) => {
         {/* Subtle Background Grid Texture */}
         <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none"></div>
 
-        {/* Large Subtle Background Logo - Fixed rotation and alignment */}
-        <div className="absolute bottom-[-5%] right-[-5%] w-[80%] md:w-[50%] opacity-[0.03] pointer-events-none select-none z-0 transform translate-y-0">
+        {/* Large Subtle Background Logo - Fixed rotation and positioning */}
+        <div className={`absolute bottom-[-5%] right-[-5%] w-[60%] md:w-[40%] opacity-[0.04] pointer-events-none select-none z-0 transition-all duration-1000 delay-300 ${isMenuOpen ? 'translate-y-0 opacity-[0.04]' : 'translate-y-10 opacity-0'}`}>
           <img 
             src="https://raw.githubusercontent.com/offbody/instat_page/main/media/instat-favicon.svg" 
             alt="" 
