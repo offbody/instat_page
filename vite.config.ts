@@ -4,19 +4,19 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   define: {
-    // Безопасная передача API-ключа из окружения Vercel в клиентский код
+    // Безопасная передача API-ключа из окружения в клиентский код
     'process.env.API_KEY': JSON.stringify(process.env.API_KEY || ''),
   },
   build: {
-    // Повышаем порог предупреждения, так как Recharts и GenAI весят много
-    chunkSizeWarningLimit: 1600,
+    // Повышаем порог предупреждения о размере, так как библиотеки визуализации тяжелые
+    chunkSizeWarningLimit: 2000,
     rollupOptions: {
       output: {
-        // Разделяем тяжелые библиотеки на отдельные файлы (vendor chunk) для кэширования браузером
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
-          'viz-vendor': ['recharts'],
-          'genai-vendor': ['@google/genai'],
+        // Упрощенная стратегия разделения кода для повышения стабильности
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
         },
       },
     },
