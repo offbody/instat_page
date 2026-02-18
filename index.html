@@ -12,6 +12,44 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <style>
+      body {
+        background-color: #030303;
+        color: #FFFFFF;
+        font-family: "Inter Tight", sans-serif;
+        margin: 0;
+      }
+      
+      .bg-noise {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+        opacity: 0.03;
+        pointer-events: none;
+        z-index: 60;
+      }
+
+      .bg-grid {
+        background-size: 50px 50px;
+        background-image: 
+          linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      }
+
+      ::selection {
+        background: #0471FF;
+        color: #fff;
+      }
+      
+      ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+      }
+    </style>
   <script type="importmap">
 {
   "imports": {
@@ -32,6 +70,7 @@
   <body>
     <div class="bg-noise"></div>
     <div id="root"></div>
+    <!-- Vite автоматически обработает этот файл и заменит его на скомпилированный бандл -->
     <script type="module" src="/index.tsx"></script>
   </body>
 </html>
