@@ -1,7 +1,12 @@
+
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onContactClick: () => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onContactClick }) => {
   return (
     <footer className="bg-brand-950 pt-24 pb-12 border-t border-white/10 overflow-hidden">
       <div className="w-full px-4 md:px-12 lg:px-24">
@@ -34,9 +39,14 @@ export const Footer: React.FC = () => {
           </div>
 
           <div className="flex flex-col justify-end">
-            <button className="bg-brand-500 hover:bg-brand-600 text-white py-4 px-8 rounded-full font-bold text-lg transition-all w-full md:w-auto">
-              Начать Проект
-            </button>
+            <a 
+              href="https://xn--80aa5afjdkos.xn--80appqfb.xn--p1ai/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center bg-brand-500 hover:bg-brand-600 text-white h-[64px] px-8 rounded-full font-bold text-lg transition-all w-full md:w-auto active:scale-95 text-center"
+            >
+              Демо-доступ
+            </a>
           </div>
         </div>
 

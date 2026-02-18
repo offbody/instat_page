@@ -18,8 +18,12 @@ export const AIDemo: React.FC = () => {
   };
 
   return (
-    <section id="ai-demo" className="py-32 bg-brand-950 relative border-t border-white/5">
-      <div className="w-full px-4 md:px-12 lg:px-24">
+    <section id="ai-demo" className="py-32 bg-brand-950 relative border-t border-white/5 overflow-hidden">
+      
+      {/* Background Grid Texture */}
+      <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
+
+      <div className="w-full px-4 md:px-12 lg:px-24 relative z-10">
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32">
           
@@ -30,7 +34,7 @@ export const AIDemo: React.FC = () => {
               <span>POWERED BY GEMINI AI</span>
             </div>
             
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter">
+            <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter uppercase">
               AI СТРАТЕГ <br />
               <span className="text-brand-500">24/7</span>
             </h2>
@@ -42,7 +46,7 @@ export const AIDemo: React.FC = () => {
             <div className="hidden lg:block">
               <div className="flex items-center gap-4 text-brand-400/60 mb-4">
                 <Bot className="w-6 h-6" />
-                <span className="font-mono text-sm">AI_AGENT_STATUS: ONLINE</span>
+                <span className="font-mono text-sm uppercase">AI_AGENT_STATUS: ONLINE</span>
               </div>
               <div className="h-px w-full bg-gradient-to-r from-brand-500/50 to-transparent"></div>
             </div>
@@ -50,8 +54,8 @@ export const AIDemo: React.FC = () => {
 
           {/* Right Column: Interactive Demo */}
           <div className="relative">
-            {/* Glow effect */}
-            <div className="absolute inset-0 bg-brand-500/20 blur-[100px] rounded-full pointer-events-none"></div>
+            {/* Minimal Border Glow instead of heavy blob */}
+            <div className="absolute -inset-1 bg-primary/5 blur-2xl rounded-3xl pointer-events-none"></div>
             
             <div className="relative bg-brand-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl">
               

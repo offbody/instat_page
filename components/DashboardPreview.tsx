@@ -11,8 +11,7 @@ import {
   PolarGrid,
   PolarAngleAxis,
   PolarRadiusAxis,
-  Radar,
-  Legend
+  Radar
 } from 'recharts';
 
 const carbonData = [
@@ -37,13 +36,13 @@ export const DashboardPreview: React.FC = () => {
   return (
     <section id="analytics" className="py-32 bg-brand-950 relative overflow-hidden">
       
-      {/* Background Ambience */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] h-[50vw] bg-brand-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+      {/* Background Grid Texture instead of blurred shapes */}
+      <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
 
       <div className="w-full px-4 md:px-12 lg:px-24 relative z-10">
         <div className="mb-24">
           <span className="text-brand-accent tracking-[0.2em] uppercase text-sm font-bold mb-4 block">Dashboard Interface</span>
-          <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tighter">
+          <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tighter uppercase">
             АНАЛИТИКА <br />
             <span className="text-brand-500/50">В РЕАЛЬНОМ ВРЕМЕНИ</span>
           </h2>

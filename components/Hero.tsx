@@ -51,8 +51,8 @@ export const Hero: React.FC = () => {
                   alt="Dashboard preview" 
                   className="h-full w-full object-cover object-left opacity-90"
                 />
-                {/* Subtle gradient to blend image with card background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[#161616] via-[#161616]/60 to-transparent w-[40%]"></div>
+                {/* Narrower gradient to improve visibility of the interface image */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#161616] to-transparent w-[25%]"></div>
               </div>
             </div>
 
