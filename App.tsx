@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { Features } from './components/Features';
-import { DashboardPreview } from './components/DashboardPreview';
-import { AIDemo } from './components/AIDemo';
-import { Footer } from './components/Footer';
-import { ContactModal } from './components/ContactModal';
+#import { Features } from './components/Features';
+#import { DashboardPreview } from './components/DashboardPreview';
+#import { AIDemo } from './components/AIDemo';
+#import { Footer } from './components/Footer';
+#import { ContactModal } from './components/ContactModal';
 
 const App: React.FC = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
