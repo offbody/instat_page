@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   define: {
+    // Vite заменит все вхождения process.env.API_KEY на строку во время сборки
     'process.env.API_KEY': JSON.stringify(process.env.API_KEY || ''),
   },
   server: {
@@ -12,6 +13,6 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 1500,
   },
 });
