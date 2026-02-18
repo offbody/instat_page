@@ -1,9 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
 
-// Initialize the Gemini API client
-// We assume process.env.API_KEY is available in the environment
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
 export interface EsgStrategyResponse {
   summary: string;
   pillars: {
@@ -18,6 +14,12 @@ export interface EsgStrategyResponse {
  */
 export const generateEsgStrategy = async (companyDescription: string): Promise<string> => {
   try {
+    const apiKey = process.env.API_KEY;
+    if (!apiKey) {
+      return "Ошибка: API ключ не настроен в окружении проекта.";
+    }
+
+    const ai = new GoogleGenAI({ apiKey });
     const modelId = 'gemini-3-flash-preview';
     
     const prompt = `
@@ -35,7 +37,7 @@ export const generateEsgStrategy = async (companyDescription: string): Promise<s
       model: modelId,
       contents: prompt,
       config: {
-        thinkingConfig: { thinkingBudget: 0 }, // Disable thinking for faster response on this simple task
+        thinkingConfig: { thinkingBudget: 0 },
         temperature: 0.7,
       }
     });
