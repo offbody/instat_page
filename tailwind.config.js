@@ -40,9 +40,39 @@ export default {
         'reveal-down': 'revealDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'fade-in': 'fadeIn 1.5s ease forwards',
         'scale-in': 'scaleIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-        'zoom-out': 'zoomOut 2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'zoom-out': 'zoomOut 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+      },
+      keyframes: {
+        revealUp: {
+          '0%': { opacity: '0', transform: 'translateY(40px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        revealDown: {
+          '0%': { opacity: '0', transform: 'translateY(-40px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        scaleIn: {
+          '0%': { opacity: '0', transform: 'scale(0.94)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        zoomOut: {
+          '0%': { 
+            opacity: '0', 
+            transform: 'scale(1.1)', 
+            filter: 'blur(20px)' 
+          },
+          '100%': { 
+            opacity: '1', 
+            transform: 'scale(1)', 
+            filter: 'blur(0)' 
+          },
+        },
       }
-    }
+    },
   },
   plugins: [],
 }
