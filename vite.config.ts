@@ -11,10 +11,9 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          react: ["react", "react-dom"],
-          charts: ["recharts"],
-          vendor: ["lodash", "date-fns"]
-        }
+  react: ["react", "react-dom"],
+  charts: ["recharts"]
+}
       }
     },
 
