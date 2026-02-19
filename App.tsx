@@ -1,17 +1,11 @@
-import React from "react";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 
-const App: React.FC = () => {
+export default function App() {
   return (
-    <div className="min-h-screen bg-white text-black">
+    <div>
       <Header onContactClick={() => {}} />
-
-      <main>
-        <Hero />
-      </main>
+      <Hero />
     </div>
   );
-};
-
-export default App;
+}
