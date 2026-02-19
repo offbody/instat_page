@@ -1,35 +1,27 @@
-import React, { useState } from 'react';
-import { Header } from './components/Header';
-import { Hero } from './components/Hero';
-import { Features } from './components/Features';
-import { DashboardPreview } from './components/DashboardPreview';
-import { AIDemo } from './components/AIDemo';
-import { Footer } from './components/Footer';
-import { ContactModal } from './components/ContactModal';
+import React, { useState } from "react"
+import { Header } from "./components/Header"
+import { Hero } from "./components/Hero"
+import { DashboardPreview } from "./components/DashboardPreview"
+import { ContactModal } from "./components/ContactModal"
 
 const App: React.FC = () => {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const handleOpenContact = () => setIsContactModalOpen(true);
-  const handleCloseContact = () => setIsContactModalOpen(false);
+  const openModal = () => setIsModalOpen(true)
+  const closeModal = () => setIsModalOpen(false)
 
   return (
     <div className="bg-background min-h-screen w-full overflow-x-hidden">
-      <Header onContactClick={handleOpenContact} />
+      <Header onContactClick={openModal} />
+
       <main>
         <Hero />
-        <Features />
         <DashboardPreview />
-        <AIDemo />
       </main>
-      <Footer onContactClick={handleOpenContact} />
-      
-      <ContactModal 
-        isOpen={isContactModalOpen} 
-        onClose={handleCloseContact} 
-      />
-    </div>
-  );
-};
 
-export default App;
+      <ContactModal open={isModalOpen} onClose={closeModal} />
+    </div>
+  )
+}
+
+export default App
