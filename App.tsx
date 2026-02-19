@@ -6,7 +6,7 @@ import { DashboardPreview } from "./components/DashboardPreview";
 const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-white text-black">
-      <Header />
+      <Header onContactClick={() => {}} />
 
       <main>
         <Hero />
