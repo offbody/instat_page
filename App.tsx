@@ -9,7 +9,6 @@ const App: React.FC = () => {
 
       <main>
         <Hero />
-        <DashboardPreview />
       </main>
     </div>
   );
