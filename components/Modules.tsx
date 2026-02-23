@@ -91,7 +91,7 @@ export const Modules: React.FC = () => {
     <section 
       id="analytics" 
       ref={containerRef}
-      className="relative w-full bg-[#191919] pt-[90px] md:pt-[140px] pb-[50px] md:pb-[80px] px-6 md:px-[48px] overflow-hidden"
+      className="relative w-full bg-[#191919] pt-[12px] md:pt-[200px] lg:pt-[140px] pb-[50px] md:pb-[80px] px-6 md:px-[48px] overflow-hidden"
     >
       {/* Background Elements */}
       <motion.div 
