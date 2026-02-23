@@ -153,6 +153,24 @@ export const Header: React.FC<HeaderProps> = ({ onContactClick }) => {
             ))}
           </div>
 
+          {/* Demo Access Button in Menu - Positioned bottom right on desktop */}
+          <div 
+            className={`mt-12 lg:mt-0 lg:absolute lg:bottom-16 lg:right-[48px] transition-all duration-700 delay-500 z-30 ${
+              isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
+          >
+            <a 
+              href="https://xn--80aa5afjdkos.xn--80appqfb.xn--p1ai/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center h-[60px] md:h-[72px] px-8 rounded-[9px] bg-[#0066FF]/[0.12] backdrop-blur-[10px] border border-white/5 transition-all hover:bg-[#0066FF]/[0.18] group"
+            >
+              <span className="font-['Inter_Tight'] font-medium text-[18px] md:text-[24px] text-white">
+                Демо-доступ к платформе
+              </span>
+            </a>
+          </div>
+
           {/* Menu Footer */}
           <div className="mt-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-12 pb-8 relative z-20">
             <div className="space-y-4">

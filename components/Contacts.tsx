@@ -14,14 +14,14 @@ const Person: React.FC<PersonProps> = ({ photo, name, role, email, phone }) => (
     <div className="flex flex-col gap-[24px]">
       <img src={photo} alt={name} className="w-[88px] h-[88px] rounded-full grayscale object-cover" loading="lazy" />
       <div className="flex flex-col gap-[4px]">
-        <h4 className="font-['Inter_Tight'] font-normal text-[32px] leading-[39px] text-white">{name}</h4>
-        <span className="font-['Inter_Tight'] font-medium text-[16px] leading-[19px] text-[#808080]">{role}</span>
+        <h4 className="font-['Inter_Tight'] font-normal text-[24px] md:text-[32px] leading-tight md:leading-[39px] text-white">{name}</h4>
+        <span className="font-['Inter_Tight'] font-medium text-[14px] md:text-[16px] leading-tight md:leading-[19px] text-[#808080]">{role}</span>
       </div>
     </div>
     <div className="w-full h-[1px] border-t border-[#7F7F7F]"></div>
     <div className="flex flex-col gap-[8px]">
-      <a href={`mailto:${email}`} className="font-['Inter_Tight'] font-medium text-[20px] leading-[24px] text-[#808080] hover:text-white transition-colors">{email}</a>
-      <a href={`tel:${phone.replace(/\D/g, '')}`} className="font-['Inter_Tight'] font-medium text-[20px] leading-[24px] text-[#808080] hover:text-white transition-colors">{phone}</a>
+      <a href={`mailto:${email}`} className="font-['Inter_Tight'] font-medium text-[16px] md:text-[20px] leading-tight md:leading-[24px] text-[#808080] hover:text-white transition-colors">{email}</a>
+      <a href={`tel:${phone.replace(/\D/g, '')}`} className="font-['Inter_Tight'] font-medium text-[16px] md:text-[20px] leading-tight md:leading-[24px] text-[#808080] hover:text-white transition-colors">{phone}</a>
     </div>
   </div>
 );
@@ -194,7 +194,7 @@ export const Contacts: React.FC = () => {
         <div className="mt-[100px] md:mt-[120px] flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 pt-8 border-t border-white/5">
           {/* Legal Info */}
           <div className="flex flex-col gap-2 max-w-[800px]">
-            <p className="font-['Inter_Tight'] font-medium text-[22px] leading-[27px] text-[#808080]">
+            <p className="font-['Inter_Tight'] font-medium text-[14px] md:text-[18px] lg:text-[22px] leading-relaxed md:leading-[27px] text-[#808080]">
               © 2026 Общество с ограниченной ответственностью «РУИКС».<br />
               Все права защищены. Любое использование материалов возможно только с письменного разрешения правообладателя.
             </p>
