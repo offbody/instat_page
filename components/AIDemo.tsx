@@ -28,7 +28,7 @@ export const AIDemo: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32">
           
           {/* Left Column: Content */}
-          <div>
+          <div className="animate-reveal-up">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-accent/10 text-brand-accent text-sm font-bold mb-8">
               <Sparkles className="w-4 h-4" />
               <span>POWERED BY GEMINI AI</span>
@@ -53,7 +53,7 @@ export const AIDemo: React.FC = () => {
           </div>
 
           {/* Right Column: Interactive Demo */}
-          <div className="relative">
+          <div className="relative animate-scale-in" style={{ animationDelay: '0.4s' }}>
             {/* Minimal Border Glow instead of heavy blob */}
             <div className="absolute -inset-1 bg-primary/5 blur-2xl rounded-3xl pointer-events-none"></div>
             

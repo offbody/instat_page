@@ -6,10 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "tsc --noEmit"
   },
   "dependencies": {
     "@google/genai": "^1.41.0",
+    "framer-motion": "^12.34.3",
     "lucide-react": "^0.474.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",

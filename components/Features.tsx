@@ -1,82 +1,74 @@
 import React from 'react';
-import { Leaf, ShieldCheck, Users, Globe, FileText, Zap, ArrowUpRight } from 'lucide-react';
-
-const features = [
-  {
-    icon: <Leaf className="w-8 h-8" />,
-    title: 'ЭКО МОНИТОРИНГ',
-    desc: 'Scope 1, 2, 3 в реальном времени.',
-    colSpan: 'lg:col-span-4'
-  },
-  {
-    icon: <Users className="w-8 h-8" />,
-    title: 'СОЦИАЛЬНЫЙ КАПИТАЛ',
-    desc: 'D&I метрики и HR аналитика.',
-    colSpan: 'lg:col-span-4'
-  },
-  {
-    icon: <ShieldCheck className="w-8 h-8" />,
-    title: 'GOVERNANCE',
-    desc: 'Комплаенс и прозрачность.',
-    colSpan: 'lg:col-span-4'
-  },
-  {
-    icon: <FileText className="w-8 h-8" />,
-    title: 'ОТЧЕТНОСТЬ В 1 КЛИК',
-    desc: 'Генерация отчетов по стандартам GRI, SASB и TCFD. Полная автоматизация сбора данных.',
-    colSpan: 'lg:col-span-8',
-    highlight: true
-  },
-  {
-    icon: <Zap className="w-8 h-8" />,
-    title: 'AI АНАЛИТИКА',
-    desc: 'Предиктивные модели рисков.',
-    colSpan: 'lg:col-span-4'
-  }
-];
+import { motion } from 'framer-motion';
 
 export const Features: React.FC = () => {
   return (
-    <section id="features" className="py-32 bg-brand-950 relative border-t border-white/5">
-      <div className="w-full px-4 md:px-12 lg:px-24">
+    <section id="features" className="relative min-h-screen w-full bg-[#191919] pt-[80px] md:pt-[100px] pb-0 px-6 md:px-[48px] overflow-hidden">
+      <div className="w-full flex flex-col gap-[12px]">
         
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
-          <h2 className="text-5xl md:text-7xl font-bold text-white uppercase tracking-tighter">
-            Инструментарий <br/>
-            <span className="text-brand-500">Платформы</span>
-          </h2>
-          <p className="max-w-md text-brand-300 text-lg leading-relaxed">
-            Мы объединили все необходимые инструменты для устойчивого развития в единую экосистему данных.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-          {features.map((feature, idx) => (
-            <div 
-              key={idx} 
-              className={`
-                ${feature.colSpan} 
-                group relative p-8 md:p-12 rounded-3xl border border-white/5 bg-brand-900/20 hover:bg-brand-900/40 transition-all duration-500
-                ${feature.highlight ? 'bg-gradient-to-br from-brand-900/40 to-brand-800/40' : ''}
-              `}
-            >
-              <div className="absolute top-8 right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <ArrowUpRight className="w-6 h-6 text-white" />
-              </div>
-
-              <div className="flex flex-col h-full justify-between gap-12">
-                <div className="w-16 h-16 rounded-2xl bg-brand-500/10 flex items-center justify-center text-brand-400 group-hover:bg-brand-500 group-hover:text-white transition-colors duration-500">
-                  {feature.icon}
-                </div>
-                
-                <div>
-                  <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">{feature.title}</h3>
-                  <p className="text-brand-300/80 text-lg">{feature.desc}</p>
-                </div>
-              </div>
+        {/* Intro Section */}
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-8">
+          
+          {/* Center: Section Number & Label - Reordered for mobile */}
+          <motion.div 
+            className="flex items-stretch gap-6 lg:w-[20%] lg:justify-center order-1 lg:order-2"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+          >
+            <div className="w-[2px] bg-[#0066FF]"></div>
+            <div className="flex flex-col gap-3 md:gap-5 py-1">
+              <span className="text-[24px] md:text-[32px] font-medium text-white leading-none">001</span>
+              <span className="text-[14px] md:text-[16px] text-white/40 uppercase tracking-wider leading-none">О платформе</span>
             </div>
-          ))}
+          </motion.div>
+
+          {/* Left: Title */}
+          <motion.div 
+            className="lg:w-[40%] order-2 lg:order-1"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          >
+            <h2 className="text-[32px] sm:text-[40px] md:text-[56px] leading-[1.1] md:leading-[1.05] font-normal text-white max-w-[600px]">
+              Платформа Инстат
+            </h2>
+          </motion.div>
+
+          {/* Right: Description */}
+          <motion.div 
+            className="lg:w-[35%] order-3"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
+          >
+            <p className="font-sans font-normal md:font-medium text-[18px] md:text-[22px] leading-[1.4] md:leading-[27px] text-[#808080]">
+              Платформа Инстат — это цифровое решение, объединяющее все необходимые инструменты для устойчивого развития в единую экосистему данных.
+            </p>
+          </motion.div>
         </div>
+
+        {/* Dashboard Visual */}
+        <motion.div 
+          className="w-full mt-4 md:mt-[-40px] order-4"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1], delay: 0.6 }}
+        >
+          <div className="relative overflow-hidden">
+            <img 
+              src="https://raw.githubusercontent.com/offbody/instat_page/main/media/features/features-visual.png" 
+              alt="Интерфейс платформы Инстат" 
+              className="w-full h-auto block"
+              referrerPolicy="no-referrer"
+            />
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );

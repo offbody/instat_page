@@ -8,7 +8,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onContactClick }) => {
   return (
-    <footer className="bg-brand-950 pt-24 pb-12 border-t border-white/10 overflow-hidden">
+    <footer className="bg-brand-950 pt-24 pb-12 border-t border-white/10 overflow-hidden animate-fade-in">
       <div className="w-full px-4 md:px-12 lg:px-24">
         
         {/* Big Links */}

@@ -40,7 +40,7 @@ export const DashboardPreview: React.FC = () => {
       <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
 
       <div className="w-full px-4 md:px-12 lg:px-24 relative z-10">
-        <div className="mb-24">
+        <div className="mb-24 animate-reveal-up">
           <span className="text-brand-accent tracking-[0.2em] uppercase text-sm font-bold mb-4 block">Dashboard Interface</span>
           <h2 className="text-5xl md:text-8xl font-bold text-white tracking-tighter uppercase">
             АНАЛИТИКА <br />
@@ -49,7 +49,7 @@ export const DashboardPreview: React.FC = () => {
         </div>
 
         {/* Dashboard "Glass" Container */}
-        <div className="w-full bg-brand-900/30 backdrop-blur-md border border-white/10 rounded-[2rem] p-6 md:p-12 shadow-2xl overflow-hidden">
+        <div className="w-full bg-brand-900/30 backdrop-blur-md border border-white/10 rounded-[2rem] p-6 md:p-12 shadow-2xl overflow-hidden animate-scale-in" style={{ animationDelay: '0.3s' }}>
           
           {/* Dashboard Header UI */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 border-b border-white/5 pb-8 gap-6">

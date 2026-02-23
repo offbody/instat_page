@@ -1,59 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Chrome-specific text rendering fix */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
 @keyframes revealUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translate3d(0, 30px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
+
 @keyframes revealDown {
-  from { opacity: 0; transform: translateY(-40px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translate3d(0, -30px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
 }
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
 @keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.94); }
-  to { opacity: 1; transform: scale(1); }
+  from { opacity: 0; transform: scale3d(0.95, 0.95, 1); }
+  to { opacity: 1; transform: scale3d(1, 1, 1); }
 }
+
 @keyframes zoomOut {
-  from { opacity: 0; transform: scale(1.05); }
-  to { opacity: 1; transform: scale(1); }
+  from { 
+    opacity: 0; 
+    transform: scale3d(1.1, 1.1, 1);
+    filter: blur(8px);
+  }
+  to { 
+    opacity: 1; 
+    transform: scale3d(1, 1, 1);
+    filter: blur(0);
+  }
 }
 
-body {
-  background-color: #030303;
-  color: #FFFFFF;
-  font-family: "Inter Tight", sans-serif;
+.animate-reveal-up {
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: revealUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.bg-noise {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('https://grainy-gradients.vercel.app/noise.svg');
-  opacity: 0.03;
-  pointer-events: none;
-  z-index: 60;
+.animate-reveal-down {
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: revealDown 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.bg-grid {
-  background-size: 50px 50px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+.animate-fade-in {
+  opacity: 0;
+  will-change: opacity;
+  animation: fadeIn 1.5s ease-out forwards;
 }
 
-::selection {
-  background: #0471FF;
-  color: #fff;
+.animate-scale-in {
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: scaleIn 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-::-webkit-scrollbar {
-  width: 0px;
-  background: transparent;
+.animate-zoom-out {
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: zoomOut 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }

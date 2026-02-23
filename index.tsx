@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './index.css';
 import App from './App';
+
+console.log("App initializing...");
+// document.body.style.border = "10px solid red";
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {

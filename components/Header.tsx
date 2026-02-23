@@ -8,13 +8,32 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ onContactClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 100);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const menuItems = [
-    { name: 'О платформе', href: '#features' },
-    { name: 'Инструменты', href: '#analytics' },
-    { name: 'Для бизнеса', href: '#ai-demo' },
-    { name: 'Для государства', href: '#' },
+    { name: 'О платформе', id: 'features' },
+    { name: 'Инструменты', id: 'analytics' },
+    { name: 'Для бизнеса', id: 'business' },
+    { name: 'Для государства', id: 'goverment' },
+    { name: 'Связь с нами', id: 'contacts' },
   ];
+
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false);
+  };
 
   // Prevent scrolling when menu is open
   useEffect(() => {
@@ -27,13 +46,15 @@ export const Header: React.FC<HeaderProps> = ({ onContactClick }) => {
 
   return (
     <>
-      <nav className="absolute top-0 left-0 w-full z-50 px-6 md:px-[48px] py-8 md:py-10 flex justify-between items-center text-white opacity-0 animate-reveal-down">
+      <nav 
+        className="absolute top-0 left-0 w-full z-[100] px-6 md:px-[48px] py-4 md:py-6 flex justify-between items-center text-white bg-transparent"
+      >
         {/* Logo */}
         <div className="flex items-center">
           <img 
             src="https://raw.githubusercontent.com/offbody/instat_page/main/media/instat-logo.svg" 
             alt="Инстат" 
-            className="h-8 w-auto"
+            className="h-7 md:h-8 w-auto"
           />
         </div>
 
@@ -42,26 +63,43 @@ export const Header: React.FC<HeaderProps> = ({ onContactClick }) => {
           {menuItems.map((item) => (
             <a 
               key={item.name}
-              href={item.href} 
-              className="text-[15px] font-medium tracking-wide text-white/70 hover:text-white transition-all duration-300 hover:translate-y-[-1px]"
+              href={`#${item.id}`}
+              onClick={(e) => scrollToSection(e, item.id)}
+              className="text-[14px] font-medium tracking-wide text-white/70 hover:text-white transition-all duration-300"
             >
               {item.name}
             </a>
           ))}
         </div>
 
-        {/* Menu Toggle */}
-        <div className="flex items-center">
+        {/* Right: Menu Toggle */}
+        <div className="flex items-center gap-6">
           <button 
             onClick={() => setIsMenuOpen(true)}
-            className="flex flex-col gap-2 items-end group p-2" 
+            className="flex flex-col gap-1.5 items-end group p-2" 
             aria-label="Открыть меню"
           >
-            <div className="w-8 h-0.5 bg-white transition-all group-hover:w-6"></div>
-            <div className="w-8 h-0.5 bg-white transition-all group-hover:w-8"></div>
+            <div className="w-6 h-0.5 bg-white transition-all group-hover:w-4"></div>
+            <div className="w-6 h-0.5 bg-white transition-all group-hover:w-6"></div>
           </button>
         </div>
       </nav>
+
+      {/* Floating Burger Menu (Visible on Scroll) */}
+      <div 
+        className={`fixed top-6 right-6 md:right-[48px] z-[110] transition-all duration-500 transform ${
+          scrolled && !isMenuOpen ? 'translate-y-0 opacity-100 scale-100' : '-translate-y-10 opacity-0 scale-90 pointer-events-none'
+        }`}
+      >
+        <button 
+          onClick={() => setIsMenuOpen(true)}
+          className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/10 flex flex-col items-center justify-center gap-1 group transition-all hover:bg-white/20"
+          aria-label="Открыть меню"
+        >
+          <div className="w-5 h-0.5 bg-white transition-all group-hover:w-3"></div>
+          <div className="w-5 h-0.5 bg-white transition-all group-hover:w-5"></div>
+        </button>
+      </div>
 
       {/* Full-screen Mobile Menu Overlay */}
       <div 
@@ -72,7 +110,7 @@ export const Header: React.FC<HeaderProps> = ({ onContactClick }) => {
         {/* Subtle Background Grid Texture */}
         <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none"></div>
 
-        {/* Large Subtle Background Logo - Fixed rotation and positioning */}
+        {/* Large Subtle Background Logo */}
         <div className={`absolute bottom-[-5%] right-[-5%] w-[60%] md:w-[40%] opacity-[0.04] pointer-events-none select-none z-0 transition-all duration-1000 delay-300 ${isMenuOpen ? 'translate-y-0 opacity-[0.04]' : 'translate-y-10 opacity-0'}`}>
           <img 
             src="https://raw.githubusercontent.com/offbody/instat_page/main/media/instat-favicon.svg" 
@@ -103,8 +141,8 @@ export const Header: React.FC<HeaderProps> = ({ onContactClick }) => {
             {menuItems.map((item, index) => (
               <a
                 key={item.name}
-                href={item.href}
-                onClick={() => setIsMenuOpen(false)}
+                href={`#${item.id}`}
+                onClick={(e) => scrollToSection(e, item.id)}
                 className={`group block text-4xl md:text-7xl font-normal text-white tracking-tighter transition-all duration-500 hover:pl-4 ${
                   isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
@@ -126,20 +164,6 @@ export const Header: React.FC<HeaderProps> = ({ onContactClick }) => {
                 platforma@инстат.рф
               </a>
             </div>
-            
-            <a 
-              href="https://xn--80aa5afjdkos.xn--80appqfb.xn--p1ai/"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setIsMenuOpen(false)}
-              className="flex items-center justify-center px-12 h-[72px] rounded-[9px] text-[20px] font-medium text-white transition-all hover:brightness-110 active:scale-[0.98] border border-white/5 shadow-[0_0_20px_rgba(4,113,255,0.15)]"
-              style={{
-                background: 'linear-gradient(90deg, #103A70 0%, #162436 100%)',
-                backdropFilter: 'blur(10px)',
-              }}
-            >
-              Демо-доступ к платформе
-            </a>
           </div>
         </div>
       </div>
