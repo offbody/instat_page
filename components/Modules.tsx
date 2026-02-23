@@ -32,6 +32,7 @@ const Module: React.FC<ModuleProps> = ({ title, description, image, sources, sce
           alt={title.replace('\n', ' ')} 
           className="w-full h-auto transition-transform duration-700 group-hover:scale-[1.02]"
           referrerPolicy="no-referrer"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       </div>
@@ -90,7 +91,7 @@ export const Modules: React.FC = () => {
     <section 
       id="analytics" 
       ref={containerRef}
-      className="relative w-full bg-[#191919] pt-[40px] md:pt-[120px] pb-[50px] md:pb-[80px] px-6 md:px-[48px] overflow-hidden"
+      className="relative w-full bg-[#191919] pt-[90px] md:pt-[140px] pb-[50px] md:pb-[80px] px-6 md:px-[48px] overflow-hidden"
     >
       {/* Background Elements */}
       <motion.div 

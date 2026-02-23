@@ -27,12 +27,12 @@ const SynergyCard: React.FC<SynergyCardProps> = ({ number, title, relations, del
 
     <div className="flex flex-col gap-4">
       {relations.map((rel, i) => (
-        <div key={i} className="flex flex-wrap items-center gap-4 group">
-          <div className="w-fit px-4 py-3 rounded-[12px] bg-[#282828] text-[14px] md:text-[18px] text-white/90 text-center transition-colors group-hover:bg-[#333333]">
+        <div key={i} className="flex items-center gap-2 sm:gap-4 group">
+          <div className="flex-1 sm:flex-none sm:w-fit px-3 sm:px-4 py-2 sm:py-3 rounded-[12px] bg-[#282828] text-[13px] sm:text-[14px] md:text-[18px] text-white/90 text-center transition-colors group-hover:bg-[#333333]">
             {rel.left}
           </div>
-          <span className="text-[#B3DF72] font-bold text-[20px]">=</span>
-          <div className="w-fit px-4 py-3 rounded-[12px] bg-[#282828] text-[14px] md:text-[18px] text-white/90 text-center transition-colors group-hover:bg-[#333333]">
+          <span className="text-[#B3DF72] font-bold text-[16px] sm:text-[20px] shrink-0">=</span>
+          <div className="flex-1 sm:flex-none sm:w-fit px-3 sm:px-4 py-2 sm:py-3 rounded-[12px] bg-[#282828] text-[13px] sm:text-[14px] md:text-[18px] text-white/90 text-center transition-colors group-hover:bg-[#333333]">
             {rel.right}
           </div>
         </div>
@@ -43,14 +43,34 @@ const SynergyCard: React.FC<SynergyCardProps> = ({ number, title, relations, del
 
 export const GovernmentSynergy: React.FC = () => {
   return (
-    <section id="goverment" className="relative w-full bg-[#191919] pt-[48px] md:pt-[64px] pb-[160px] px-6 md:px-[48px]">
+    <section id="goverment" className="relative w-full bg-[#191919] pt-[48px] md:pt-[64px] pb-[50px] md:pb-[80px] px-6 md:px-[48px]">
       <div className="relative z-10 w-full flex flex-col gap-16 md:gap-24">
         
         {/* Header 004 */}
         <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-8">
-          {/* Left: Title */}
+          {/* Center: Section Number & Title (Mobile) */}
           <motion.div 
-            className="lg:w-[40%]"
+            className="flex items-stretch gap-6 lg:w-[20%] lg:justify-center order-1 lg:order-2"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+          >
+            <div className="w-[2px] bg-[#0066FF]"></div>
+            <div className="flex flex-col gap-3 md:gap-5 py-1">
+              <span className="text-[24px] md:text-[32px] font-medium text-white leading-none">004</span>
+              <span className="text-[14px] md:text-[16px] text-white/40 uppercase tracking-wider leading-none">Для государства</span>
+              
+              {/* Title for Mobile/Tablet */}
+              <h2 className="lg:hidden text-[32px] sm:text-[44px] md:text-[56px] leading-[1.1] font-normal text-white tracking-tight mt-4">
+                <span className="italic">Синергия приоритетов</span> бизнеса и государства
+              </h2>
+            </div>
+          </motion.div>
+
+          {/* Left: Title (Desktop Only) */}
+          <motion.div 
+            className="hidden lg:block lg:w-[40%] order-2 lg:order-1"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -61,24 +81,9 @@ export const GovernmentSynergy: React.FC = () => {
             </h2>
           </motion.div>
 
-          {/* Center: Section Number */}
-          <motion.div 
-            className="flex items-stretch gap-6 lg:w-[20%] lg:justify-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-          >
-            <div className="w-[2px] bg-[#0066FF]"></div>
-            <div className="flex flex-col gap-3 md:gap-5 py-1">
-              <span className="text-[24px] md:text-[32px] font-medium text-white leading-none">004</span>
-              <span className="text-[14px] md:text-[16px] text-white/40 uppercase tracking-wider leading-none">Для государства</span>
-            </div>
-          </motion.div>
-
           {/* Right: Description */}
           <motion.div 
-            className="lg:w-[35%]"
+            className="lg:w-[35%] order-3"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

@@ -12,7 +12,7 @@ interface PersonProps {
 const Person: React.FC<PersonProps> = ({ photo, name, role, email, phone }) => (
   <div className="flex flex-col p-6 gap-[32px] bg-[#282828] rounded-[12px] flex-1">
     <div className="flex flex-col gap-[24px]">
-      <img src={photo} alt={name} className="w-[88px] h-[88px] rounded-full grayscale object-cover" />
+      <img src={photo} alt={name} className="w-[88px] h-[88px] rounded-full grayscale object-cover" loading="lazy" />
       <div className="flex flex-col gap-[4px]">
         <h4 className="font-['Inter_Tight'] font-normal text-[32px] leading-[39px] text-white">{name}</h4>
         <span className="font-['Inter_Tight'] font-medium text-[16px] leading-[19px] text-[#808080]">{role}</span>
@@ -43,13 +43,14 @@ export const Contacts: React.FC = () => {
   };
 
   return (
-    <section id="contacts" className="relative w-full bg-[#191919] pt-[100px] md:pt-[160px] pb-[60px] md:pb-[80px] px-6 md:px-[48px] overflow-hidden">
+    <section id="contacts" className="relative w-full bg-[#191919] pt-[40px] md:pt-[60px] pb-[60px] md:pb-[80px] px-6 md:px-[48px] overflow-hidden">
       {/* Background Decor - INSTAT Text */}
-      <div className="absolute top-[48px] left-[48px] right-[48px] pointer-events-none z-0">
+      <div className="absolute top-[24px] md:top-[48px] left-6 md:left-[48px] right-6 md:right-[48px] pointer-events-none z-0">
         <img 
           src="https://raw.githubusercontent.com/offbody/instat_page/main/media/contacts/instat-bage.png" 
           alt="" 
-          className="w-full h-auto object-contain select-none"
+          className="w-full max-w-full h-auto object-contain select-none"
+          loading="lazy"
         />
       </div>
 
@@ -165,10 +166,10 @@ export const Contacts: React.FC = () => {
               {/* Title + Description + Button Section (Заголовок+Описание+Кнопка) */}
               <div className="flex flex-col items-start gap-5 w-full mt-auto">
                 <div className="flex flex-col gap-2">
-                  <h3 className="font-['Inter_Tight'] font-normal text-[32px] leading-[39px] text-white w-full">
+                  <h3 className="font-['Inter_Tight'] font-normal text-[24px] sm:text-[32px] leading-tight text-white w-full">
                     Демо-доступ
                   </h3>
-                  <p className="font-['Inter_Tight'] font-medium text-[20px] leading-[24px] text-white w-full max-w-[414px]">
+                  <p className="font-['Inter_Tight'] font-medium text-[16px] sm:text-[20px] leading-snug text-white w-full max-w-[414px]">
                     Ознакомьтесь с базовым функционалом платформы в один клик
                   </p>
                 </div>
@@ -178,9 +179,9 @@ export const Contacts: React.FC = () => {
                   href="https://xn--80aa5afjdkos.xn--80appqfb.xn--p1ai/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-full h-[72px] p-3 rounded-[9px] bg-[#0066FF]/[0.12] backdrop-blur-[10px] transition-all hover:bg-[#0066FF]/[0.18] group"
+                  className="flex items-center justify-center w-full h-[60px] sm:h-[72px] p-3 rounded-[9px] bg-[#0066FF]/[0.12] backdrop-blur-[10px] transition-all hover:bg-[#0066FF]/[0.18] group"
                 >
-                  <span className="font-['Inter_Tight'] font-medium text-[20px] leading-[24px] text-white">
+                  <span className="font-['Inter_Tight'] font-medium text-[16px] sm:text-[20px] leading-[24px] text-white">
                     Демо-доступ к платформе Инстат
                   </span>
                 </a>

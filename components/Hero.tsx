@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen w-full flex flex-col justify-end px-6 md:px-[48px] pb-10 md:pb-[48px] overflow-hidden bg-background">
+    <section className="relative min-h-screen min-h-[100svh] w-full flex flex-col justify-end px-6 md:px-[48px] pb-10 md:pb-[48px] overflow-hidden bg-background">
       
       {/* Background Image with Zoom-out and Fade-in */}
       <div 
@@ -19,7 +19,8 @@ export const Hero: React.FC = () => {
         {/* Left: Text Block with Staggered Fade-Up */}
         <div className="flex flex-col items-start gap-4 md:gap-[24px] xl:w-1/2 pb-4 animate-reveal-up" style={{ animationDelay: '0.2s' }}>
           <h1 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] leading-[1.1] md:leading-[1.05] font-normal text-white max-w-[800px]">
-            Платформа для управления устойчивым развитием и митигацией
+            <span className="md:hidden">Платформа для управления устойчивым развитием</span>
+            <span className="hidden md:inline">Платформа для управления устойчивым развитием и митигацией</span>
           </h1>
           <p className="text-[16px] md:text-[18px] lg:text-[22px] font-normal md:font-medium text-white/80 leading-[1.4] max-w-[838px]">
             <span className="md:hidden">Цифровое решение для управления устойчивым развитием бизнеса</span>
@@ -41,6 +42,7 @@ export const Hero: React.FC = () => {
                 src="https://raw.githubusercontent.com/offbody/instat_page/main/media/contacts/dashboard-preview.png" 
                 alt="" 
                 className="w-full h-auto object-contain object-right-top"
+                loading="lazy"
               />
             </div>
 
@@ -52,6 +54,7 @@ export const Hero: React.FC = () => {
                   src="https://raw.githubusercontent.com/offbody/instat_page/main/media/hero/demo-grid.svg" 
                   alt="" 
                   className="w-[36px] h-[36px]"
+                  loading="lazy"
                 />
               </div>
 

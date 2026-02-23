@@ -65,6 +65,7 @@ export const Features: React.FC = () => {
               alt="Интерфейс платформы Инстат" 
               className="w-full h-auto block"
               referrerPolicy="no-referrer"
+              loading="lazy"
             />
           </div>
         </motion.div>

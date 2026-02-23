@@ -64,6 +64,40 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ number, title, items, classNa
 );
 
 export const BusinessSection: React.FC = () => {
+  const [activeQuote, setActiveQuote] = React.useState(0);
+  const scrollRef = React.useRef<HTMLDivElement>(null);
+
+  const quotes = [
+    {
+      text: <>“Все нацпроекты увязаны между собой ключевой целью — <strong>обеспечение устойчивого развития</strong> страны и укрепление ее суверенитета.”</>,
+      author: "Владимир Владимирович Путин"
+    },
+    {
+      text: <>“Российской Федерации придется столкнуться с рядом вызовов, формирующих как ограничения, так и новые возможности для развития. <strong>Национальные цели развития отвечают на эти вызовы</strong>.”</>,
+      author: "Единый план по достижению национальных целей развития РФ"
+    },
+    {
+      text: <>“Применение рекомендаций СОКБ носит добровольный характер, но они уже <strong>служат прототипом будущего национального стандарта,</strong> учитывающего особенности РФ”</>,
+      author: "РБК Компании"
+    },
+    {
+      text: <>“К 2027 году не менее 10 тысяч российских компаний <strong>должны внедрить Стандарт общественного капитала Бизнеса</strong>.”</>,
+      author: "Министерство Экономического Развития Российской Федерации"
+    },
+    {
+      text: <>“Приоритетом для России становится <strong>ориентация повестки устойчивого развития на национальный контекст</strong> — то есть адаптация международных подходов с учетом национальных особенностей, целей и приоритетов.”</>,
+      author: "Банк России"
+    }
+  ];
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const index = Math.round(scrollLeft / clientWidth);
+      setActiveQuote(index);
+    }
+  };
+
   return (
     <section id="business" className="relative w-full bg-[#191919] pt-[40px] md:pt-[60px] pb-[48px] md:pb-[64px] px-6 md:px-[48px]">
       {/* Background Map Pattern */}
@@ -84,30 +118,31 @@ export const BusinessSection: React.FC = () => {
       <div className="relative z-10 w-full flex flex-col gap-24 md:gap-32">
         {/* Quotes Part */}
         <div className="w-full">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
+          {/* Desktop Grid */}
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
             {/* Quote 1 - Large Top Left */}
             <QuoteCard 
               className="md:col-span-4 md:row-span-2"
               textClassName="font-['Inter_Tight'] text-[24px] sm:text-[32px] lg:text-[40px] lg:leading-[48px]"
               authorClassName="text-[18px] md:text-[24px]"
-              text={<>“Все нацпроекты увязаны между собой ключевой целью — <strong>обеспечение устойчивого развития</strong> страны и укрепление ее суверенитета.”</>}
-              author="Владимир Владимирович Путин"
+              text={quotes[0].text}
+              author={quotes[0].author}
               delay={0.1}
             />
 
             {/* Quote 2 - Top Right */}
             <QuoteCard 
               className="md:col-span-8"
-              text={<>“Российской Федерации придется столкнуться с рядом вызовов, формирующих как ограничения, так и новые возможности для развития. <strong>Национальные цели развития отвечают на эти вызовы</strong>.”</>}
-              author="Единый план по достижению национальных целей развития РФ"
+              text={quotes[1].text}
+              author={quotes[1].author}
               delay={0.2}
             />
 
             {/* Quote 3 - Middle Left (Below 2) */}
             <QuoteCard 
               className="md:col-span-4"
-              text={<>“Применение рекомендаций СОКБ носит добровольный характер, но они уже <strong>служат прототипом будущего национального стандарта,</strong> учитывающего особенности РФ”</>}
-              author="РБК Компании"
+              text={quotes[2].text}
+              author={quotes[2].author}
               delay={0.3}
             />
 
@@ -116,18 +151,47 @@ export const BusinessSection: React.FC = () => {
               className="md:col-span-4 md:row-span-2"
               textClassName="font-['Inter_Tight'] text-[24px] sm:text-[32px] lg:text-[40px] lg:leading-[48px]"
               authorClassName="text-[18px] md:text-[24px]"
-              text={<>“К 2027 году не менее 10 тысяч российских компаний <strong>должны внедрить Стандарт общественного капитала Бизнеса</strong>.”</>}
-              author="Министерство Экономического Развития Российской Федерации"
+              text={quotes[3].text}
+              author={quotes[3].author}
               delay={0.5}
             />
 
             {/* Quote 5 - Bottom Left */}
             <QuoteCard 
               className="md:col-span-8"
-              text={<>“Приоритетом для России становится <strong>ориентация повестки устойчивого развития на национальный контекст</strong> — то есть адаптация международных подходов с учетом национальных особенностей, целей и приоритетов.”</>}
-              author="Банк России"
+              text={quotes[4].text}
+              author={quotes[4].author}
               delay={0.4}
             />
+          </div>
+
+          {/* Mobile/Tablet Gallery */}
+          <div className="md:hidden flex flex-col gap-6">
+            <div 
+              ref={scrollRef}
+              onScroll={handleScroll}
+              className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 pb-4"
+            >
+              {quotes.map((quote, i) => (
+                <div key={i} className="min-w-full snap-center flex items-stretch">
+                  <QuoteCard 
+                    text={quote.text}
+                    author={quote.author}
+                    className="w-full h-full min-h-[300px]"
+                    textClassName="text-[20px] leading-[1.3]"
+                  />
+                </div>
+              ))}
+            </div>
+            {/* Dots */}
+            <div className="flex justify-center gap-2">
+              {quotes.map((_, i) => (
+                <div 
+                  key={i} 
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${activeQuote === i ? 'bg-[#0066FF] w-4' : 'bg-white/20'}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
 
@@ -135,7 +199,7 @@ export const BusinessSection: React.FC = () => {
         <div className="flex flex-col gap-16 md:gap-24">
           {/* Header 003 */}
           <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-8">
-            {/* Left: Section Number */}
+            {/* Left: Section Number & Title (Mobile) */}
             <motion.div 
               className="flex items-stretch gap-6 lg:w-[20%]"
               initial={{ opacity: 0, y: 30 }}
@@ -147,6 +211,11 @@ export const BusinessSection: React.FC = () => {
               <div className="flex flex-col gap-3 md:gap-5 py-1">
                 <span className="text-[24px] md:text-[32px] font-medium text-white leading-none">003</span>
                 <span className="text-[14px] md:text-[16px] text-white/40 uppercase tracking-wider leading-none">Для бизнеса</span>
+                
+                {/* Title for Mobile/Tablet */}
+                <h2 className="lg:hidden text-[32px] sm:text-[44px] md:text-[56px] leading-[1.1] font-normal text-white tracking-tight mt-4">
+                  <span className="italic">Стимулы</span> для крупного бизнеса и МСП
+                </h2>
               </div>
             </motion.div>
 
@@ -163,9 +232,9 @@ export const BusinessSection: React.FC = () => {
               </p>
             </motion.div>
 
-            {/* Right: Title */}
+            {/* Right: Title (Desktop Only) */}
             <motion.div 
-              className="lg:w-[40%] lg:text-right"
+              className="hidden lg:block lg:w-[40%] lg:text-right"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
