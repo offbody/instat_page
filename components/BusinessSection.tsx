@@ -170,7 +170,7 @@ export const BusinessSection: React.FC = () => {
             <div 
               ref={scrollRef}
               onScroll={handleScroll}
-              className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 pb-4"
+              className="flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory no-scrollbar gap-4 pb-4 touch-pan-x"
             >
               {quotes.map((quote, i) => (
                 <div key={i} className="min-w-full snap-center flex items-stretch">
