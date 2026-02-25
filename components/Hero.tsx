@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen min-h-[100svh] w-full flex flex-col justify-end px-6 md:px-[48px] pb-10 md:pb-[48px] overflow-hidden bg-background">
+    <section className="relative min-h-screen min-h-[100svh] w-full flex flex-col justify-end px-6 md:px-[48px] pb-10 md:pb-[48px] overflow-hidden bg-background landscape:py-20">
       
       {/* Background Image with Zoom-out and Fade-in */}
       <div 

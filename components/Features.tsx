@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export const Features: React.FC = () => {
   return (
-    <section id="features" className="relative min-h-screen md:min-h-[800px] lg:min-h-screen w-full bg-[#191919] pt-[80px] md:pt-[100px] pb-0 px-6 md:px-[48px] overflow-hidden">
+    <section id="features" className="relative min-h-screen md:min-h-[800px] lg:min-h-screen w-full bg-[#191919] pt-[80px] md:pt-[100px] pb-12 px-6 md:px-[48px] overflow-hidden landscape:py-20">
       <div className="w-full flex flex-col gap-[12px]">
         
         {/* Intro Section */}
