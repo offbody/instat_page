@@ -127,7 +127,7 @@ export const Contacts: React.FC = () => {
                 name="Евгений Соболев"
                 role="Технический директор"
                 email="cto@инстат.рф"
-                phone="+7 (969) 710-68-06"
+                phone="+7 (915) 117-78-64"
               />
             </div>
           </motion.div>
